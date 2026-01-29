@@ -1,7 +1,7 @@
 repositories {
     mavenCentral()
     google() // Needed for androidx
-    maven {url = 'https://maven.brott.dev/' } // editare pentru conectare la Dashboard
+    maven { url = 'https://maven.brott.dev/' } // editare pentru conectare la Dashboard
 }
 
 dependencies {
