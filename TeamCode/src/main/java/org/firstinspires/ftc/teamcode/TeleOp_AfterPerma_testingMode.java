@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.acmerobotics.dashboard.config.Config;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -8,6 +9,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.CRServo;
 
 @TeleOp(name="DECODE_TELEOP_TESTING_MODE", group="Linear OpMode")
+@Config
 public class TeleOp_AfterPerma_testingMode extends LinearOpMode {
 
     // ================= DRIVE =================
@@ -20,11 +22,11 @@ public class TeleOp_AfterPerma_testingMode extends LinearOpMode {
     CRServo servoR; // RIGHT
 
     // ================= CONSTANTS =================
-    private static final double SHOOTER_POWER = 0.95;
-    private static final double INTAKE_POWER  = 0.45;
+    private static double SHOOTER_POWER = 0.95;
+    private static double INTAKE_POWER  = 0.45;
 
-    private static final double SERVO_SHOOT =  1.0;
-    private static final double SERVO_STOP  =  0.0;
+    private static double SERVO_SHOOT =  1.0;
+    private static double SERVO_STOP  =  0.0;
 
     // ================= STATE =================
     private boolean intakeOn  = false;
