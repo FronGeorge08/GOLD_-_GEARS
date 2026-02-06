@@ -16,8 +16,6 @@ public class AUTO_FAR_RED extends LinearOpMode {
 
     DriveHardware drive;
     ShooterHardware shooter;
-
-    // ================= DASHBOARD TUNABLES =================
     public static double DRIVE_POWER  = 0.54;
     public static double STRAFE_POWER = 0.6;
     public static double TURN_POWER   = 0.5;
@@ -30,12 +28,8 @@ public class AUTO_FAR_RED extends LinearOpMode {
 
     public static double LEFT_SCALE  = 1.0;
     public static double RIGHT_SCALE = 0.96;
-
-    // Auto distances
     public static double L  = 88;
     public static double D  = 40;
-
-    // Shooter parameters
     public static double SHOOTER_POWER = 0;
     public static double FEED_POWER = 1.0;
     public static double COVER_OPEN_TIME = 0.4;
@@ -44,7 +38,6 @@ public class AUTO_FAR_RED extends LinearOpMode {
     public static double INTAKE_SHOOTING = 0.7;
     public static double LITTLE_ANGLE_SWITCH = 5;
 
-    // ================= SHOOTING STATE =================
     private boolean shootingActive = false;
     private int shotsRemaining = 0;
     private ElapsedTime shotTimer = new ElapsedTime();

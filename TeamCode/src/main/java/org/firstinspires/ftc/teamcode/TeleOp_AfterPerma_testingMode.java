@@ -68,7 +68,6 @@ public class TeleOp_AfterPerma_testingMode extends LinearOpMode {
 
             robot.intake.setPower(intakePower);
 
-            // -------- TELEMETRY --------
             telemetry.addData("Shooter ON", shooterOn);
             telemetry.addData("Shooter Power", shooterOn ? SHOOTER_POWER : 0);
             telemetry.addData("Intake ON", intakeOn);

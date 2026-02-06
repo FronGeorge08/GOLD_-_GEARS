@@ -69,7 +69,6 @@ public class TELEOP_AutoShort_TESTING extends LinearOpMode {
         sleep((long) timeMs);
         stopDrive();
     }
-
     void driveRobot(double f, double s, double r) {
         drive.LUmotor.setPower(f + s + r);
         drive.LDmotor.setPower(f - s + r);

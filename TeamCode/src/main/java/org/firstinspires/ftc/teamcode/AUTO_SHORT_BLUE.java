@@ -27,12 +27,8 @@ public class AUTO_SHORT_BLUE extends LinearOpMode {
 
     public static double LEFT_SCALE  = 1.0;
     public static double RIGHT_SCALE = 0.96;
-
-    // Auto distances (scaled)
     public static double L = 88;
     public static double D = 40;
-
-    // Shooter parameters (scaled)
     public static double SHOOTER_POWER = 0.78;
     public static double FEED_POWER = 1.0;
     public static double COVER_OPEN_TIME = 0.4;

@@ -12,17 +12,13 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 public class MecanumDriveTeleOp extends LinearOpMode {
 
     HardWare robot;
-
     public static double TICKS_PER_REV = 8192.0;
     public static double WHEEL_DIAMETER_CM = 3.5;
     public static double WHEEL_DIAMETER_IN = WHEEL_DIAMETER_CM / 2.54;
     public static double WHEEL_CIRCUMFERENCE = Math.PI * WHEEL_DIAMETER_IN;
     public static double TICKS_TO_INCH = WHEEL_CIRCUMFERENCE / TICKS_PER_REV;
-
-
     int lastXTicks = 0;
     int lastYTicks = 0;
-
     double xPos = 0;
     double yPos = 0;
 
@@ -62,7 +58,6 @@ public class MecanumDriveTeleOp extends LinearOpMode {
             xPos += dx;
             yPos += dy;
 
-            // -------- TELEMETRY --------
             telemetry.addLine("=== RAW ENCODERS ===");
             telemetry.addData("X Encoder (LD)", xTicks);
             telemetry.addData("Y Encoder (RD)", yTicks);

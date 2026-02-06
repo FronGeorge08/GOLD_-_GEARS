@@ -22,8 +22,8 @@ public class TeleOp_AfterPerma extends LinearOpMode {
     private static final double SHOOTER_POWER = 0.8;
     private static final double INTAKE_POWER  = 0.75;
 
-    private static final double SERVO_START_DEG = -90;  // initial angle
-    private static final double SERVO_SHOOT_DEG = 90;   // shoot angle
+    private static final double SERVO_START_DEG = -90;
+    private static final double SERVO_SHOOT_DEG = 90;
 
     private static final double FEED_TIME = 0.35;
     private static final double PAUSE_TIME = 0.45;
