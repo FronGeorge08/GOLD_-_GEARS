@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -8,41 +9,33 @@ import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp(name="TeleOp_ServoShoot_Toggle", group="Linear OpMode")
+@Disabled
 public class TeleOp_AfterPerma extends LinearOpMode {
 
-    // Drive motors
     DcMotor LUmotor, LDmotor, RUmotor, RDmotor;
 
-    // Shooter and intake
     DcMotorEx shooter;
     DcMotor intake;
 
-    // Positional servo
     Servo feederServo;
 
-    // Shooter constants
     private static final double SHOOTER_POWER = 0.8;
     private static final double INTAKE_POWER  = 0.75;
 
-    // Servo angles
     private static final double SERVO_START_DEG = -90;  // initial angle
     private static final double SERVO_SHOOT_DEG = 90;   // shoot angle
 
     private static final double FEED_TIME = 0.35;
     private static final double PAUSE_TIME = 0.45;
 
-    // Servo state
     private boolean shootingSequence = false;
     private boolean feeding = false;
     private int targetShots = 0;
     private int shotsDone = 0;
     private double stateStartTime = 0;
 
-    // Toggles
     private boolean intakeOn = false;
     private boolean shooterOn = false;
-
-    // Gamepad previous states
     private boolean aLast = false;
     private boolean yLast = false;
     private boolean rtLast = false;
@@ -50,11 +43,8 @@ public class TeleOp_AfterPerma extends LinearOpMode {
 
     @Override
     public void runOpMode() {
-
-        // Initialize drive
         initDriveMotors();
 
-        // Initialize hardware
         shooter = hardwareMap.get(DcMotorEx.class, "shooter");
         intake  = hardwareMap.get(DcMotor.class, "intake");
         feederServo = hardwareMap.get(Servo.class, "servoS"); // single positional servo
@@ -64,7 +54,6 @@ public class TeleOp_AfterPerma extends LinearOpMode {
         intake.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         shooter.setDirection(DcMotorSimple.Direction.REVERSE);
 
-        // Start servo at initial angle
         setServoAngle(SERVO_START_DEG);
 
         telemetry.addLine("READY");
@@ -73,22 +62,17 @@ public class TeleOp_AfterPerma extends LinearOpMode {
 
         while (opModeIsActive()) {
 
-            // ---------- Drive ----------
             driveMecanum();
-
-            // ---------- Intake toggle (A) ----------
             boolean aNow = gamepad1.a;
             if (aNow && !aLast) intakeOn = !intakeOn;
             aLast = aNow;
             intake.setPower(intakeOn ? INTAKE_POWER : 0);
 
-            // ---------- Shooter toggle (Y) ----------
             boolean yNow = gamepad1.y;
             if (yNow && !yLast) shooterOn = !shooterOn;
             yLast = yNow;
             shooter.setPower(shooterOn ? SHOOTER_POWER : 0);
 
-            // ---------- Shooting ----------
             boolean rtNow = gamepad1.right_trigger > 0.5;
             if (rtNow && !rtLast && shooterOn && !shootingSequence) startShooting(1);
             rtLast = rtNow;
@@ -106,7 +90,6 @@ public class TeleOp_AfterPerma extends LinearOpMode {
         }
     }
 
-    // ------------------- Shooting Logic -------------------
     private void startShooting(int shots) {
         shootingSequence = true;
         feeding = true;
@@ -138,10 +121,8 @@ public class TeleOp_AfterPerma extends LinearOpMode {
         }
     }
 
-    // ------------------- Helpers -------------------
     private void setServoAngle(double degrees) {
-        // Map -90°→90° to 0.0→1.0 for servo.setPosition()
-        double position = (degrees + 90.0) / 180.0; // -90° => 0.0, 0° => 0.5, 90° => 1.0
+        double position = (degrees + 90.0) / 180.0;
         feederServo.setPosition(position);
     }
 
