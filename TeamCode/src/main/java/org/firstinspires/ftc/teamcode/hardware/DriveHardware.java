@@ -28,4 +28,33 @@ public class DriveHardware {
         RUmotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         RDmotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
     }
+
+    public void driveMecanum(double y, double x, double rx) {
+
+        double LU = y + x + rx;
+        double LD = y - x + rx;
+        double RU = y - x - rx;
+        double RD = y + x - rx;
+
+        double max = Math.max(
+                1.0,
+                Math.max(
+                        Math.abs(LU),
+                        Math.max(
+                                Math.abs(LD),
+                                Math.max(Math.abs(RU), Math.abs(RD))
+                        )
+                )
+        );
+
+        LU /= max;
+        LD /= max;
+        RU /= max;
+        RD /= max;
+
+        LUmotor.setPower(LU);
+        LDmotor.setPower(LD);
+        RUmotor.setPower(RU);
+        RDmotor.setPower(RD);
+    }
 }

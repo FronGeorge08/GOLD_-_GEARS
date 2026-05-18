@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-@TeleOp(name = "DECODE_TELEOPwqd", group = "Linear OpMode")
+@TeleOp(name = "DECODE_TELEOP", group = "Linear OpMode")
 @Config
 @Disabled
 public class TeleOp_AfterPerma_testingMode extends LinearOpMode {
